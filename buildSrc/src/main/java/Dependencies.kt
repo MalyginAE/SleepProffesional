@@ -1,17 +1,25 @@
 
 object Dependencies {
 
+    object Camera{
+        const val camerax_version = "1.0.1"
+
+        const val  camera = "androidx.camera:camera-camera2:$camerax_version"
+        const val cameraLifecycle = "androidx.camera:camera-lifecycle:$camerax_version"
+        const val cameraView = "androidx.camera:camera-view:1.0.0-alpha27"
+    }
+
     object Compose {
         const val version = "1.0.5"
         const val ui = "androidx.compose.ui:ui:$version"
         const val material = "androidx.compose.material:material:$version"
+        const val materialIcons = "androidx.compose.material:material-icons-extended:$version"
         const val tooling = "androidx.compose.ui:ui-tooling-preview:$version"
         const val livedata = "androidx.compose.runtime:runtime-livedata:$version"
-
         const val toolingTest = "androidx.compose.ui:ui-tooling:$version"
         const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
-
         const val accompanist = "com.google.accompanist:accompanist-systemuicontroller:0.18.0"
+        const val coil_compose = "io.coil-kt:coil-compose:1.4.0"
     }
 
     object Kotlin {

@@ -5,5 +5,9 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun CameraScreen() {
+
     Text(text = "Cool")
+
 }
+
+

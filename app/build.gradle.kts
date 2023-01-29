@@ -72,8 +72,9 @@ dependencies {
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.material)
-
+    implementation(Dependencies.Compose.materialIcons)
     implementation(Dependencies.Compose.ui)
+    implementation(Dependencies.Compose.coil_compose)
     implementation(Dependencies.Compose.material)
     implementation(Dependencies.Compose.tooling)
     implementation(Dependencies.Compose.livedata)
@@ -85,6 +86,11 @@ dependencies {
     implementation(Dependencies.Navigation.navigationCompose)
 
     implementation(Dependencies.Kotlin.serialization)
+
+    //Camera
+    implementation(Dependencies.Camera.camera)
+    implementation(Dependencies.Camera.cameraView)
+    implementation(Dependencies.Camera.cameraLifecycle)
 
     // Hilt
     implementation(Dependencies.Hilt.android)

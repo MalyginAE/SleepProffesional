@@ -71,7 +71,7 @@ fun FormViewDisplay(
     NavigationPanel(
         "next",
         onNextButtonClick = {navController.navigate(MainScreen.Camera.route)},
-        onPreviousButtonClick = {navController.navigate(navController.previousBackStackEntry.destination.)},
+        onPreviousButtonClick = { navController.previousBackStackEntry?.let { navController.navigate(it.id) } },
         "backend"
     ) {
 
