@@ -14,6 +14,8 @@ import com.hse.sleeppro.screens.analyse.model.AnalyzeEvent
 import com.hse.sleeppro.screens.camera.model.CameraViewModel
 import com.hse.sleeppro.screens.forms.FormViewState
 import com.hse.sleeppro.screens.forms.model.FormViewModel
+import com.hse.sleeppro.screens.main.MainScreen
+import com.hse.sleeppro.ui.component.NavigationPanel
 
 @Composable
 fun AnalyzeScreen(
@@ -25,20 +27,19 @@ fun AnalyzeScreen(
 ) {
     val viewState = analyseViewModel.analyseViewState.observeAsState()
 
-    when(val state = viewState.value){
-        is AnalyseViewState.Loading ->{
-            CircularProgressIndicator(
-               // modifier = Modifier.align(Alignment.Center),
-                color = Color.Red
-            )
+    when (val state = viewState.value) {
+        is AnalyseViewState.Loading -> {
+           AnalyseDataLoadingView(navController = navController)
         }
-        is AnalyseViewState.Display ->{
-            Text(text = state.result)
+        is AnalyseViewState.Display -> {
+            AnalyseDataDisplayView(navController = navController, state)
         }
     }
     LaunchedEffect(key1 = viewState, block = {
         val fvs: FormViewState.Display = formViewModel.formViewState.value as FormViewState.Display
-        analyseViewModel.obtainEvent(AnalyzeEvent.PostRequest("",fvs.enterNameModel.text)
-    ) })
+        analyseViewModel.obtainEvent(
+            AnalyzeEvent.PostRequest("", fvs.enterNameModel.text)
+        )
+    })
 
 }
