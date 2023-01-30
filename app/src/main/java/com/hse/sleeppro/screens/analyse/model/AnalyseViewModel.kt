@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hse.sleeppro.base.EventHandler
-import com.hse.sleeppro.screens.camera.model.CameraEvent
-import com.hse.sleeppro.screens.camera.model.CameraViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,8 +20,16 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
     override fun obtainEvent(event: AnalyzeEvent) {
         when (val currentState = _analyseViewState.value) {
             is AnalyseViewState.Loading -> reduce(currentState, event)
+            is AnalyseViewState.Display -> reduce(currentState,event)
+
         }
 
+    }
+
+    private fun reduce(currentState: AnalyseViewState.Display, event: AnalyzeEvent) {
+        when(event){
+
+        }
     }
 
     private fun reduce(currentState: AnalyseViewState.Loading, event: AnalyzeEvent) {
@@ -32,6 +38,7 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
                 viewModelScope.launch {
                     delay(1000)
                     _analyseViewState.postValue(AnalyseViewState.Display(event.firstName))
+
                 }
             }
         }

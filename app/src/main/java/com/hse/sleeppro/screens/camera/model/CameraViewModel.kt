@@ -38,7 +38,7 @@ class CameraViewModel @Inject constructor() : ViewModel(), EventHandler<CameraEv
                 _cameraViewState.postValue(currentState.copy(showCamera = false, showPhoto = true, uri = event.uri))
             }
             is CameraEvent.OnImageClick -> {
-                _cameraViewState.postValue(currentState.copy(showCamera = true,showPhoto = false))
+                _cameraViewState.postValue(currentState.copy(showCamera = true, showPhoto = false))
             }
         }
     }
