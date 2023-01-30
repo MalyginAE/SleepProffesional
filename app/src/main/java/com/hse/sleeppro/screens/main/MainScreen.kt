@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.hse.sleeppro.screens.analyse.AnalyzeScreen
+import com.hse.sleeppro.screens.analyse.model.AnalyseViewModel
 import com.hse.sleeppro.screens.camera.CameraScreen
 import com.hse.sleeppro.screens.camera.model.CameraViewModel
 import com.hse.sleeppro.screens.forms.model.FormViewModel
@@ -29,40 +31,39 @@ fun MainScreen(
     //  cameraSettings: CameraSettings
 ) {
     val navChildController = rememberNavController()
+    val cameraViewModel = hiltViewModel<CameraViewModel>()
+    val formViewModel = hiltViewModel<FormViewModel>()
     Column {
         Box(modifier = Modifier.weight(1f)) {
             NavHost(
                 navController = navChildController,
                 startDestination = MainScreen.Greeting.route
             ) {
-                //greetingFlow(navController)
                 composable(MainScreen.Greeting.route) {
                     GreetingScreen(navChildController)
                 }
 
                 composable(MainScreen.Cards.route) {
-                    val formViewModel = hiltViewModel<FormViewModel>()
                     FormScreen(
                         navChildController, formViewModel = formViewModel
                     )
                 }
 
                 composable(MainScreen.Camera.route) {
-
-                    val cameraViewModel = hiltViewModel<CameraViewModel>()
                     CameraScreen(
                         navController = navChildController,
-//                        cameraSettings = cameraSettings,
                         cameraViewModel = cameraViewModel,
-
-
-                        // navChildController, formViewModel = formViewModel
                     )
                 }
 
                 composable(MainScreen.PostData.route) {
-
-                    Text(text = "YRRRRAAA")
+                    val analyseViewModel = hiltViewModel<AnalyseViewModel>()
+                    AnalyzeScreen(
+                        navController = navChildController,
+                        cameraViewModel = cameraViewModel,
+                        formViewModel = formViewModel,
+                        analyseViewModel = analyseViewModel
+                    )
                 }
 
             }
