@@ -26,46 +26,18 @@ fun CameraScreen(cameraViewModel: CameraViewModel, navController: NavController)
         return if (mediaDir != null && mediaDir.exists()) mediaDir else activity.filesDir
     }
 
-//    fun handleImageCapture(uri: Uri) {
-//        Log.i("kilo", "Image captured: $uri")
-//        // shouldShowCamera.value = false
-//
-//        // photoUri = uri
-//        //shouldShowPhoto.value = true
-//    }
     when (val state = viewState.value) {
         is CameraViewState.Display -> {
             CameraDisplayView(
                 viewState = state,
                 navController = navController,
                 getOutputDirectory = ::getOutputDirectory,
-                onImageCapture = { cameraViewModel.obtainEvent(CameraEvent.TookPhotoEvent(it)) }
+                onImageCapture = { cameraViewModel.obtainEvent(CameraEvent.TookPhotoEvent(it)) },
+                onImageClick = {cameraViewModel.obtainEvent(CameraEvent.OnImageClick)}
             )
 
         }
 
     }
 }
-//            if (shouldShowCamera.value) {
-//                CameraView(
-//                    outputDirectory = outputDirectory,
-//                    executor = cameraExecutor,
-//                    onImageCaptured = ::handleImageCapture,
-//                    onError = { Log.e("kilo", "View error:", it) }
-//                )
-//            }
-//
-//            if (shouldShowPhoto.value) {
-//                Image(
-//                    painter = rememberImagePainter(photoUri),
-//                    contentDescription = null,
-//                    modifier = Modifier.fillMaxSize()
-//                )
-//            }
-
-//// requestCameraPermission()
-//TextButton(onClick = { navController.navigate(MainScreen.PostData.route) }) {
-//    Text(text = "Hello")
-//}
-
 

@@ -10,7 +10,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CameraViewModel @Inject constructor() : ViewModel(), EventHandler<CameraEvent> {
-    private val _cameraViewState: MutableLiveData<CameraViewState> = MutableLiveData(CameraViewState.Display(showCamera = true))
+    private val _cameraViewState: MutableLiveData<CameraViewState> =
+        MutableLiveData(CameraViewState.Display(showCamera = true))
     val cameraViewState: LiveData<CameraViewState> = _cameraViewState
 
 
@@ -18,7 +19,7 @@ class CameraViewModel @Inject constructor() : ViewModel(), EventHandler<CameraEv
         when (val currentState = _cameraViewState.value) {
             is CameraViewState.CheckPermission -> reduce(currentState, event)
             is CameraViewState.ClickCamera -> reduce(currentState, event)
-            is CameraViewState.Display -> reduce(currentState,event)
+            is CameraViewState.Display -> reduce(currentState, event)
         }
     }
 
@@ -31,15 +32,18 @@ class CameraViewModel @Inject constructor() : ViewModel(), EventHandler<CameraEv
     }
 
     private fun reduce(currentState: CameraViewState.Display, event: CameraEvent) {
-        when(event){
+        when (event) {
             is CameraEvent.TookPhotoEvent -> {
                 Log.i("kilo", "Image captured: ${event.uri}")
-                _cameraViewState.postValue(currentState.copy(showCamera = false,showPhoto = true, uri = event.uri))
+                _cameraViewState.postValue(currentState.copy(showCamera = false, showPhoto = true, uri = event.uri))
+            }
+            is CameraEvent.OnImageClick -> {
+                _cameraViewState.postValue(currentState.copy(showCamera = true,showPhoto = false))
             }
         }
     }
 
 
-   // private fun
+    // private fun
 
 }

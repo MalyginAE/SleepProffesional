@@ -74,7 +74,7 @@ fun CameraView(
         AndroidView({ previewView }, modifier = Modifier.fillMaxSize())
 
         IconButton(
-            modifier = Modifier.padding(bottom = 20.dp),
+            modifier = Modifier.padding(end = 20.dp).align(Alignment.CenterEnd),
             onClick = {
                 Log.i("kilo", "ON CLICK")
                 takePhoto(
