@@ -7,5 +7,6 @@ sealed class MainScreen(val route: String, @StringRes val resourceId: Int) {
     object Greeting : MainScreen("greeting", R.string.title_next)
     object Cards : MainScreen("formChoose", R.string.title_next)
     object Camera : MainScreen("camera", R.string.title_next)
-   // object Settings : MainBottomScreen("settingsFlow", R.string.title_settings)
+    object PostData : MainScreen("postData", R.string.title_next)
+    // object Settings : MainBottomScreen("settingsFlow", R.string.title_settings)
 }

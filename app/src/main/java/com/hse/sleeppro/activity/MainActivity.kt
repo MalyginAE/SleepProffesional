@@ -24,6 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.hse.sleeppro.R
 import com.hse.sleeppro.screens.camera.CameraView
+import com.hse.sleeppro.screens.camera.model.CameraSettings
 import com.hse.sleeppro.screens.main.MainScreen
 import com.hse.sleeppro.screens.splash.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,8 +34,8 @@ import java.util.concurrent.Executors
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private lateinit var outputDirectory: File
-    private lateinit var cameraExecutor: ExecutorService
+//    private  var outputDirectory: File
+  //  private  var cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 
     private var shouldShowCamera: MutableState<Boolean> = mutableStateOf(false)
 
@@ -58,33 +59,33 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            if (shouldShowCamera.value) {
-                CameraView(
-                    outputDirectory = outputDirectory,
-                    executor = cameraExecutor,
-                    onImageCaptured = ::handleImageCapture,
-                    onError = { Log.e("kilo", "View error:", it) }
-                )
-            }
+//            if (shouldShowCamera.value) {
+//                CameraView(
+//                    outputDirectory = outputDirectory,
+//                    executor = cameraExecutor,
+//                    onImageCaptured = ::handleImageCapture,
+//                    onError = { Log.e("kilo", "View error:", it) }
+//                )
+//            }
+//
+//            if (shouldShowPhoto.value) {
+//                Image(
+//                    painter = rememberImagePainter(photoUri),
+//                    contentDescription = null,
+//                    modifier = Modifier.fillMaxSize()
+//                )
+//            }
 
-            if (shouldShowPhoto.value) {
-                Image(
-                    painter = rememberImagePainter(photoUri),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
+             requestCameraPermission()
 
-            requestCameraPermission()
-
-            outputDirectory = getOutputDirectory()
-            cameraExecutor = Executors.newSingleThreadExecutor()
+//            outputDirectory =
+//            cameraExecutor = Executors.newSingleThreadExecutor()
 
             val navController = rememberNavController()
-           // private val  requestPermissionLauncher: registerForActivityResult()
+            // private val  requestPermissionLauncher: registerForActivityResult()
 
 
-            NavHost(navController = navController, startDestination = "main") {
+            NavHost(navController = navController, startDestination = "splash") {
                 composable("splash") {
                     SplashScreen(navController = navController)
                 }
@@ -98,7 +99,20 @@ class MainActivity : ComponentActivity() {
 //                        paddingSize = currentPaddingSize.value
 //                    )
 
-                    MainScreen(navController = navController,
+                    MainScreen(
+                        navController = navController,
+                        requestCameraPermission = ::requestCameraPermission,
+//                        cameraSettings = CameraSettings(
+//                            requestCameraPermission = ::requestCameraPermission,
+//                            getOutPutDirectory = ::getOutputDirectory,
+//                            handleImageCapture = ::handleImageCapture,
+//                            shouldShowCamera = shouldShowCamera,
+//                            shouldShowPhoto = shouldShowPhoto,
+//                            photoUri = photoUri,
+//                            cameraExecutor = Executors.newSingleThreadExecutor(),//убрать в будушем
+//                            outputDir = getOutputDirectory()
+//                            )
+
 
                     )
                 }
@@ -106,6 +120,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
     private fun getOutputDirectory(): File {
         val mediaDir = externalMediaDirs.firstOrNull()?.let {
             File(it, resources.getString(R.string.app_name)).apply { mkdirs() }
@@ -122,7 +137,7 @@ class MainActivity : ComponentActivity() {
                 Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
                 Log.i("kilo", "Permission previously granted")
-                shouldShowCamera.value = true
+               // shouldShowCamera.value = true
             }
 
             ActivityCompat.shouldShowRequestPermissionRationale(
@@ -133,13 +148,16 @@ class MainActivity : ComponentActivity() {
             else -> requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
     }
+
     private fun handleImageCapture(uri: Uri) {
         Log.i("kilo", "Image captured: $uri")
-        shouldShowCamera.value = false
+       // shouldShowCamera.value = false
 
         photoUri = uri
-        shouldShowPhoto.value = true
+        //shouldShowPhoto.value = true
     }
+
+
 
 }
 

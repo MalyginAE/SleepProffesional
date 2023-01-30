@@ -1,5 +1,7 @@
 package com.hse.sleeppro.screens.camera.model
 
-sealed class CameraEvent {
+import android.net.Uri
 
+sealed class CameraEvent {
+    data class TookPhotoEvent(val uri:Uri):CameraEvent()
 }
