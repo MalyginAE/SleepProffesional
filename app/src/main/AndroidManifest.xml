@@ -4,10 +4,12 @@
 
     <uses-feature android:name="android.hardware.camera.any"/>
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".SleepProApp"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -15,9 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SleepPro">
+
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="landscape"
+
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.SleepPro">

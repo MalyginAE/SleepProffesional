@@ -1,12 +1,9 @@
 package com.hse.sleeppro.screens.analyse
 
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.hse.sleeppro.screens.analyse.model.AnalyseViewModel
 import com.hse.sleeppro.screens.analyse.model.AnalyseViewState
@@ -14,8 +11,6 @@ import com.hse.sleeppro.screens.analyse.model.AnalyzeEvent
 import com.hse.sleeppro.screens.camera.model.CameraViewModel
 import com.hse.sleeppro.screens.forms.FormViewState
 import com.hse.sleeppro.screens.forms.model.FormViewModel
-import com.hse.sleeppro.screens.main.MainScreen
-import com.hse.sleeppro.ui.component.NavigationPanel
 
 @Composable
 fun AnalyzeScreen(

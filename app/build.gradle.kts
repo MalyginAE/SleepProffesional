@@ -109,4 +109,10 @@ dependencies {
 
     androidTestImplementation(Dependencies.Compose.uiTest)
     debugImplementation(Dependencies.Compose.toolingTest)
+
+    //HttpClient
+    implementation(Dependencies.HttpClient.ktor_core)
+    implementation(Dependencies.HttpClient.ktorSerialization)
+    implementation(Dependencies.HttpClient.androidClient)
+    implementation(Dependencies.HttpClient.ktorLogging)
 }

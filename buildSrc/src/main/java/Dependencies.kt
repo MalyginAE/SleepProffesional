@@ -62,4 +62,13 @@ object Dependencies {
         const val androidJUnit = "androidx.test.ext:junit:1.1.2"
         const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
     }
+
+    object HttpClient{
+        private const val ktor_version = "1.6.4"
+        const val ktor_core = "io.ktor:ktor-client-core:$ktor_version"
+       const val androidClient = "io.ktor:ktor-client-android:$ktor_version"
+        const val ktorSerialization = "io.ktor:ktor-client-serialization:$ktor_version"
+        const val ktorLogging = "io.ktor:ktor-client-logging:$ktor_version"
+
+    }
 }
