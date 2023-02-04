@@ -7,6 +7,7 @@ object Dependencies {
         const val  camera = "androidx.camera:camera-camera2:$camerax_version"
         const val cameraLifecycle = "androidx.camera:camera-lifecycle:$camerax_version"
         const val cameraView = "androidx.camera:camera-view:1.0.0-alpha27"
+        const val compressPhoto = "id.zelory:compressor:3.0.1"
     }
 
     object Compose {
@@ -64,11 +65,13 @@ object Dependencies {
     }
 
     object HttpClient{
-        private const val ktor_version = "1.6.4"
+        private const val ktor_version = "1.6.1"
         const val ktor_core = "io.ktor:ktor-client-core:$ktor_version"
        const val androidClient = "io.ktor:ktor-client-android:$ktor_version"
         const val ktorSerialization = "io.ktor:ktor-client-serialization:$ktor_version"
         const val ktorLogging = "io.ktor:ktor-client-logging:$ktor_version"
 
     }
+
+
 }

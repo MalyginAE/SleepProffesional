@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("dagger.hilt.android.plugin")
-    kotlin("plugin.serialization") version "1.5.30"
+    kotlin("plugin.serialization") version "1.6.0"
     kotlin("android")
     kotlin("kapt")
 }
@@ -91,6 +91,7 @@ dependencies {
     implementation(Dependencies.Camera.camera)
     implementation(Dependencies.Camera.cameraView)
     implementation(Dependencies.Camera.cameraLifecycle)
+    implementation(Dependencies.Camera.compressPhoto)
 
     // Hilt
     implementation(Dependencies.Hilt.android)
