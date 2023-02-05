@@ -1,9 +1,12 @@
 package com.hse.sleeppro.screens.analyse
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.navigation.NavController
@@ -25,6 +28,15 @@ fun AnalyseDataDisplayView(navController: NavController,analyseViewState: Analys
     ) {
 
         Text(text = analyseViewState.result)
+        Image(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable {
 
+                },
+            painter = rememberImagePainter(analyseViewState.image),
+            contentDescription = null,
+
+            )
     }
 }

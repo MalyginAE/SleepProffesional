@@ -21,12 +21,18 @@ import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.append
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.forms.submitFormWithBinaryData
+import io.ktor.client.request.get
 import io.ktor.client.request.post
+import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.content.PartData
+import io.ktor.http.contentLength
 import io.ktor.http.contentType
+import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.core.isEmpty
+import io.ktor.utils.io.core.readBytes
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
@@ -65,8 +71,10 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
                 viewModelScope.launch {
 
 
+                    val tempFile = File.createTempFile("files", "index")
                     HttpClient().use {
                         val file = event.uri?.toFile()
+
 //                        val compressFile = Compressor.compress(event.context, file!!){
 //                            resolution(1280, 720)
 //                            quality(80)
@@ -74,26 +82,34 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
 //                            size(262144)}
                         val data = it.submitFormWithBinaryData<String>(
                             url = POST_IMAGE,
-
                             formData = formData {
-
                                 if (file != null) {
-                                    Log.d("TAG","file size ${file.length()}")
-//                                    Log.d("TAG","file size ${compressFile.absolutePath}")
-//                                    Log.d("TAG","file size ${compressFile.length()}")
+                                    Log.d("TAG", "file size $file")
                                     append("file", file.readBytes(), Headers.build {
                                         append(HttpHeaders.ContentType, "image/png")
                                         append(HttpHeaders.ContentDisposition, "filename=\"${file.name}\"")
                                     })
-                                   // append("file", bytes, Headers.build { append(HttpHeaders.ContentType,"image/gif") })
                                 }
-                            })
+                            }
+                        )
 
-                                Log.d("RESPONSE", "POST TO $POST_IMAGE returned $data")
+                        var response = it.get<HttpResponse>(POST_IMAGE)
+                        val channel: ByteReadChannel = response.content
+                        while (!channel.isClosedForRead) {
+                            val packet = channel.readRemaining(DEFAULT_BUFFER_SIZE.toLong(),DEFAULT_BUFFER_SIZE)
+                            while (!packet.isEmpty) {
+                                val bytes = packet.readBytes()
+                                tempFile.appendBytes(bytes)
+                                Log.i("File received","Received ${tempFile.length()} bytes from ${response.contentLength()}")
+                            }
+                        }
+                        println("A file saved to ${tempFile.path}")
+
+
+                        Log.d("RESPONSE", "POST TO $POST_IMAGE returned $data")
                     }
 
-                    delay(1000)
-                    _analyseViewState.postValue(AnalyseViewState.Display(event.firstName))
+                    _analyseViewState.postValue(AnalyseViewState.Display(event.firstName,tempFile))
 
                 }
             }
