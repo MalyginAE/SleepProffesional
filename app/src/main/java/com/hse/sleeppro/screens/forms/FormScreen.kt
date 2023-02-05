@@ -1,5 +1,6 @@
 package com.hse.sleeppro.screens.main
 
+import android.util.Log
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.runtime.Composable
@@ -71,7 +72,9 @@ fun FormViewDisplay(
     NavigationPanel(
         "next",
         onNextButtonClick = {navController.navigate(MainScreen.Camera.route)},
-        onPreviousButtonClick = { navController.previousBackStackEntry?.let { navController.navigate(it.id) } },
+        onPreviousButtonClick = {
+            navController.navigate(MainScreen.Greeting.route)
+        } ,
         "backend"
     ) {
 

@@ -28,7 +28,9 @@ fun CameraDisplayView(
     NavigationPanel(
         "next",
         onNextButtonClick = { navController.navigate(MainScreen.PostData.route) },
-        onPreviousButtonClick = { navController.previousBackStackEntry?.let { navController.navigate(it.id) } },
+        onPreviousButtonClick = {
+            navController.navigate(MainScreen.Cards.route)
+        } ,
         "backend"
     ) {
         if (viewState.showCamera) {

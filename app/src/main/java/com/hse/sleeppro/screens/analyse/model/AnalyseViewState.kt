@@ -4,5 +4,5 @@ import java.io.File
 
 sealed class AnalyseViewState {
     object Loading : AnalyseViewState()
-    data class Display(val result:String,val image:File):AnalyseViewState()
+    data class Display(val result:String,val receivedImage:File):AnalyseViewState()
 }
