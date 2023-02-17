@@ -9,8 +9,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hse.sleeppro.base.EventHandler
+import com.hse.sleeppro.screens.analyse.model.dto.SaveUserResponseDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.android.Android
+import io.ktor.client.features.json.GsonSerializer
+import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.forms.submitFormWithBinaryData
 import io.ktor.client.request.get
@@ -29,7 +33,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<AnalyzeEvent> {
     private val BASE_URL = "http://192.168.0.9:8080" //todo вынести в конфиг
-    private val POST_IMAGE = "$BASE_URL/image"// todo тоже тудаже
+    private val GET_IMAGE = "$BASE_URL/image/"// todo тоже тудаже
+    private val POST_CUSTOMER = "$BASE_URL/customer"// todo тоже тудаже
     private val _analyseViewState: MutableLiveData<AnalyseViewState> =
         MutableLiveData(AnalyseViewState.Loading)
     val analyseViewState: LiveData<AnalyseViewState> = _analyseViewState
@@ -60,19 +65,19 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
 
                     val tempFile = File.createTempFile("files", "index")
 
-                    HttpClient().use {
+                    HttpClient(Android){
+                        install(JsonFeature) {
+                            serializer = GsonSerializer()
+
+                        }
+                        expectSuccess=true
+                    }.use {
+
                         val file = event.uri?.toFile()
-
-//                        val compressFile = Compressor.compress(event.context, file!!){
-//                            resolution(1280, 720)
-//                            quality(80)
-//                            (Bitmap.CompressFormat.PNG)
-//                            size(262144)}
+                        var customerId: Long? = null
                         try {
-
-
-                            val data = it.submitFormWithBinaryData<String>(
-                                url = POST_IMAGE,
+                            val response = it.submitFormWithBinaryData<SaveUserResponseDto>(
+                                url = POST_CUSTOMER,
                                 formData = formData {
                                     if (file != null) {
                                         Log.d("TAG", "file size $file")
@@ -83,14 +88,15 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
                                     }
                                 }
                             )
-                            Log.d("RESPONSE", "POST TO $POST_IMAGE returned $data")
+                            customerId = response.id
+                            Log.d("RESPONSE", "POST TO $POST_CUSTOMER returned $response")
                         }
                         catch (e: Exception) {
                             //тут можно пульнуть экран с кнопкой переповторить
                             Log.e("ERROR","error ",e)
                         }
                             // вынести в suspend функцию
-                        var response = it.get<HttpResponse>(POST_IMAGE)
+                        var response = it.get<HttpResponse>(GET_IMAGE+ customerId+"?state=analyze")
                         val channel: ByteReadChannel = response.content
                         while (!channel.isClosedForRead) {
                             val packet = channel.readRemaining(DEFAULT_BUFFER_SIZE.toLong(), DEFAULT_BUFFER_SIZE)

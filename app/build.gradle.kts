@@ -116,4 +116,6 @@ dependencies {
     implementation(Dependencies.HttpClient.ktorSerialization)
     implementation(Dependencies.HttpClient.androidClient)
     implementation(Dependencies.HttpClient.ktorLogging)
+    implementation(Dependencies.HttpClient.ktorClientGson)
+    implementation(Dependencies.HttpClient.ktorClientGsonJvm)
 }

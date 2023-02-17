@@ -65,27 +65,26 @@ fun FormViewDisplay(
     keyboardActions: KeyboardActions,
     onValueChanged: (String) -> Unit,
 
-   // onNextButtonClick: () -> Unit,
+    // onNextButtonClick: () -> Unit,
     //onPreviousButtonClick: () -> Unit,
 ) {
     val model = viewState.enterNameModel
     NavigationPanel(
         "next",
-        onNextButtonClick = {navController.navigate(MainScreen.Camera.route)},
+        onNextButtonClick = { navController.navigate(MainScreen.Camera.route) },
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Greeting.route)
-        } ,
+        },
         "backend"
     ) {
 
-            EnterName(
-                text = model.text,
-                onValueChanged = onValueChanged,
-                cardTitle = model.cardTitle,
-                labelText = model.labelText,
-                keyboardActions = keyboardActions
-            )
-
+        EnterName(
+            text = model.text,
+            onValueChanged = onValueChanged,
+            cardTitle = model.cardTitle,
+            labelText = model.labelText,
+            keyboardActions = keyboardActions
+        )
 
 
     }

@@ -7,8 +7,8 @@ sealed class AnalyzeEvent {
     data class PostRequest(
         val uri: Uri?,
         val firstName: String,
-        val context:Context
+        val context: Context
 
-                           ) : AnalyzeEvent()
+    ) : AnalyzeEvent()
 
 }

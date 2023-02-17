@@ -70,7 +70,8 @@ object Dependencies {
        const val androidClient = "io.ktor:ktor-client-android:$ktor_version"
         const val ktorSerialization = "io.ktor:ktor-client-serialization:$ktor_version"
         const val ktorLogging = "io.ktor:ktor-client-logging:$ktor_version"
-
+        const val ktorClientGsonJvm = "io.ktor:ktor-client-json-jvm:$ktor_version"
+        const val ktorClientGson = "io.ktor:ktor-client-gson:$ktor_version"
     }
 
 
