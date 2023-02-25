@@ -4,7 +4,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -17,6 +16,7 @@ import com.hse.sleeppro.screens.analyse.AnalyzeScreen
 import com.hse.sleeppro.screens.analyse.model.AnalyseViewModel
 import com.hse.sleeppro.screens.camera.CameraScreen
 import com.hse.sleeppro.screens.camera.model.CameraViewModel
+import com.hse.sleeppro.screens.forms.FormScreen
 import com.hse.sleeppro.screens.forms.model.FormViewModel
 import com.hse.sleeppro.screens.greetting.GreetingScreen
 

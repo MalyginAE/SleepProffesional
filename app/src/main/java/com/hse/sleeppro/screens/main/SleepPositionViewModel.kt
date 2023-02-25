@@ -94,7 +94,6 @@ class SleepPositionViewModel : ViewModel(), EventHandler<MainCardsEvents>{
      override fun obtainEvent(event: MainCardsEvents) {
 //          when(event){
 //              is MainCardsEvents.onSleepPositionClick -> _sleepPosition.postValue()
-//
 //          }
      }
 

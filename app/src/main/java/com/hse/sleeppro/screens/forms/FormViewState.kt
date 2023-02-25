@@ -1,15 +1,19 @@
 package com.hse.sleeppro.screens.forms
 
-import androidx.compose.foundation.text.KeyboardActions
-
 sealed class FormViewState {
     object Loading : FormViewState()
     data class Display(
-        val enterNameModel: EnterNameModel = EnterNameModel(
+        val enterNameModel: EnterTextCardModel = EnterTextCardModel(
             labelText = "Enter customer name",
             text = "",
             cardTitle = "Name",
            // isShowIconCheck = false
+        ),
+        val enterEmailModel: EnterTextCardModel = EnterTextCardModel(
+            labelText = "Enter customer email",
+            text = "",
+            cardTitle = "Email",
+            // isShowIconCheck = false
         ),
         val genderModel:GenderModel = GenderModel(GenderType.None),
 
@@ -17,7 +21,7 @@ sealed class FormViewState {
         ) : FormViewState()
 }
 
-data class EnterNameModel(
+data class EnterTextCardModel(
 
     val text: String,
    // val isShowIconCheck:Boolean,

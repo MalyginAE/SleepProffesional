@@ -32,7 +32,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<AnalyzeEvent> {
-    private val BASE_URL = "http://192.168.0.9:8080" //todo вынести в конфиг
+    private val BASE_URL = "http://192.168.181.76:8080" //todo вынести в конфиг
     private val GET_IMAGE = "$BASE_URL/image/"// todo тоже тудаже
     private val POST_CUSTOMER = "$BASE_URL/customer"// todo тоже тудаже
     private val _analyseViewState: MutableLiveData<AnalyseViewState> =
@@ -114,7 +114,7 @@ class AnalyseViewModel @Inject constructor() : ViewModel(), EventHandler<Analyze
 
                     }
 
-                    _analyseViewState.postValue(AnalyseViewState.Display(event.firstName, tempFile))
+                    _analyseViewState.postValue(AnalyseViewState.Display(event.fvs.enterNameModel.text, tempFile))
 
                 }
             }

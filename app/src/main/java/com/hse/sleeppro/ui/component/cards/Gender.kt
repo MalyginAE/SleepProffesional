@@ -13,7 +13,7 @@ import com.hse.sleeppro.ui.theme.PrussianBlue
 import com.hse.sleeppro.ui.util.countEqualDistance
 
 @Composable
-fun EnterGender(modifier: Modifier = Modifier,cardTitle: String, genderList: Map<String, Boolean>, onClick: () -> Unit) {
+fun EnterOnePossibleChoise(modifier: Modifier = Modifier, cardTitle: String, genderList: Map<String, Boolean>, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxHeight(0.5f)

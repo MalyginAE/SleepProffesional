@@ -37,7 +37,7 @@ fun AnalyzeScreen(
         val fvs: FormViewState.Display = formViewModel.formViewState.value as FormViewState.Display
         val cvs: CameraViewState.Display = cameraViewModel.cameraViewState.value as CameraViewState.Display
         analyseViewModel.obtainEvent(
-            AnalyzeEvent.PostRequest(cvs.uri, fvs.enterNameModel.text,context)
+            AnalyzeEvent.PostRequest(cvs.uri, fvs,context)
         )
     })
 

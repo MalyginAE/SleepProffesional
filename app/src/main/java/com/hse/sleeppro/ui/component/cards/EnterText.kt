@@ -6,16 +6,11 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hse.sleeppro.ui.theme.PanelGray
 
@@ -23,19 +18,21 @@ import com.hse.sleeppro.ui.theme.PanelGray
 //    val text:String
 //)
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun EnterName(
-    modifier: Modifier = Modifier,
+fun EnterText(
+    modifier: Modifier = Modifier
+        .fillMaxHeight(0.33f),
     text: String,
     onValueChanged: (String) -> Unit,
     cardTitle: String,
     labelText: String,
-    keyboardActions: KeyboardActions
+   keyboardActions: KeyboardActions
     //trailingIcon: () -> Unit
 ) {
+
     Box(
-        modifier = Modifier
-            .fillMaxHeight(0.33f)
+        modifier = modifier
             .padding(bottom = 10.dp, top = 10.dp)
             .background(PanelGray)
     ) {
@@ -44,11 +41,6 @@ fun EnterName(
                 .heightIn(min = 30.dp, max = 410.dp)
                 .fillMaxWidth()
         ) {
-
-//            val keyboardController = LocalSoftwareKeyboardController.current
-//            val isShowIconCheck = remember {
-//                mutableStateOf(false)
-//            }
             CardTitle(title = cardTitle)
             OutlinedTextField(
                 modifier = Modifier

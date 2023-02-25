@@ -1,24 +1,19 @@
-package com.hse.sleeppro.screens.main
+package com.hse.sleeppro.screens.forms
 
-import android.util.Log
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
-import com.hse.sleeppro.screens.forms.EnterNameModel
-import com.hse.sleeppro.screens.forms.FormEvent
-import com.hse.sleeppro.screens.forms.FormViewState
 import com.hse.sleeppro.screens.forms.model.FormViewModel
+import com.hse.sleeppro.screens.main.MainScreen
 import com.hse.sleeppro.ui.component.LeftInfoPanel
 import com.hse.sleeppro.ui.component.NavigationPanel
-import com.hse.sleeppro.ui.component.cards.EnterGender
-import com.hse.sleeppro.ui.component.cards.EnterName
+import com.hse.sleeppro.ui.component.cards.EnterOnePossibleChoise
+import com.hse.sleeppro.ui.component.cards.EnterText
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -47,11 +42,11 @@ fun FormScreen(
                 }
             ),
 
-            onValueChanged = { formViewModel.obtainEvent(FormEvent.NameChanged(it)) }
+            onNameChanged = { formViewModel.obtainEvent(FormEvent.NameChanged(it)) },
+            onEmailChanged = { formViewModel.obtainEvent(FormEvent.EmailChanged(it)) },
 
 
-        )
-        else -> {}
+            )
     }
 
 
@@ -63,12 +58,14 @@ fun FormViewDisplay(
     navController: NavController,
     viewState: FormViewState.Display,
     keyboardActions: KeyboardActions,
-    onValueChanged: (String) -> Unit,
+    onNameChanged: (String) -> Unit,
+    onEmailChanged: (String) -> Unit,
 
     // onNextButtonClick: () -> Unit,
     //onPreviousButtonClick: () -> Unit,
 ) {
-    val model = viewState.enterNameModel
+    val nameModel = viewState.enterNameModel
+    val emailModel = viewState.enterEmailModel
     NavigationPanel(
         "next",
         onNextButtonClick = { navController.navigate(MainScreen.Camera.route) },
@@ -78,13 +75,28 @@ fun FormViewDisplay(
         "backend"
     ) {
 
-        EnterName(
-            text = model.text,
-            onValueChanged = onValueChanged,
-            cardTitle = model.cardTitle,
-            labelText = model.labelText,
-            keyboardActions = keyboardActions
-        )
+        Column() {
+            EnterText(
+                text = nameModel.text,
+                onValueChanged = onNameChanged,
+                cardTitle = nameModel.cardTitle,
+                labelText = nameModel.labelText,
+                keyboardActions = keyboardActions
+            )
+
+            EnterText(
+                text = emailModel.text,
+                onValueChanged = onEmailChanged,
+                cardTitle = emailModel.cardTitle,
+                labelText = emailModel.labelText,
+                keyboardActions = keyboardActions
+            )
+
+//            EnterOnePossibleChoise(cardTitle = ) {
+//
+//            }
+
+        }
 
 
     }
