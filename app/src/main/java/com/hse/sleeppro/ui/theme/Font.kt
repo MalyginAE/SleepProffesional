@@ -9,3 +9,6 @@ import com.hse.sleeppro.R
 val cardsFont = FontFamily(
     Font(R.font.font_cards, FontWeight.Normal, FontStyle.Italic),
 )
+val robotoFont = FontFamily(
+    Font(R.font.roboto_medium, FontWeight.Normal, FontStyle.Italic)
+)

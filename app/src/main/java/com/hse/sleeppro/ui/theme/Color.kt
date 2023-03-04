@@ -13,3 +13,8 @@ val Pink40 = Color(0xFF7D5260)
 val PrussianBlue = Color(0xFF013161)
 val PanelBlue = Color(0xFF57B5E7)
 val PanelGray = Color(0xFFEAEAEA)
+
+
+val Green500 = Color(0xFF42C5E1)
+val Base900 = Color(0xFF183059)
+val Base0 = Color(0xFFFFFFFF)
