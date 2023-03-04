@@ -2,25 +2,20 @@ package com.hse.sleeppro.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.hse.sleeppro.R
-import com.hse.sleeppro.screens.main.MainScreen
+import com.hse.sleeppro.ui.component.cards.AnalysisInfo
 import com.hse.sleeppro.ui.component.cards.PersonaliseCard
+import com.hse.sleeppro.ui.component.cards.ResultInfo
+import com.hse.sleeppro.ui.component.cards.ScanInfo
 import com.hse.sleeppro.ui.theme.Green500
-import com.hse.sleeppro.ui.theme.PanelBlue
-import com.hse.sleeppro.ui.theme.PrussianBlue
-import com.hse.sleeppro.ui.theme.cardsFont
 
 
 @Composable
@@ -51,8 +46,12 @@ fun LeftInfoPanel() {
 //                    .background(Green500)
                     .align(Alignment.Center)
 
+
             ) {
                 PersonaliseCard()
+                AnalysisInfo()
+                ScanInfo()
+                ResultInfo()
 //                for (action in mapOf("Personalise" to Color.White,"Scan" to PrussianBlue,
 //                    "Analysis" to PrussianBlue,"Results" to PrussianBlue))
 //                Box(
