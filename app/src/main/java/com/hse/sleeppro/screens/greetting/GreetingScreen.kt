@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hse.sleeppro.R
 import com.hse.sleeppro.screens.main.MainScreen
+import com.hse.sleeppro.ui.component.button.StartButton
 
 @Composable
 fun GreetingScreen(navController: NavController) {
@@ -27,11 +28,11 @@ fun GreetingScreen(navController: NavController) {
                 modifier = Modifier
                     .width(570.dp)
                     .height(150.dp)
-                    .clickable { navController.navigate(MainScreen.Cards.route) }
 
                 //   .heightIn(min = 50.dp, max = 150.dp)
                 //  .widthIn(min = 50.dp, max = 150.dp)
             )
+            StartButton("New scan",{ navController.navigate(MainScreen.Cards.route) })
         }
     }
 //    Button(onClick = { navController.navigate(MainScreen.Cards.route) }) {

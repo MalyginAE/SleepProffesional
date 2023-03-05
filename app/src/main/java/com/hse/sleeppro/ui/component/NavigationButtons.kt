@@ -19,31 +19,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hse.sleeppro.ui.component.button.BackButton
 import com.hse.sleeppro.ui.component.button.NextButton
+import com.hse.sleeppro.ui.component.button.ReloadButton
 import com.hse.sleeppro.ui.theme.PanelBlue
 import com.hse.sleeppro.ui.theme.cardsFont
 
 @Composable
-fun NavigationButton(nextButtonText:String,
-                     onNextButtonClick: () -> Unit,
-                    onPreviousButtonClick: () -> Unit,
-                    previousButtonText: String
+fun NavigationButton(
+    nextButtonText: String,
+    onNextButtonClick: () -> Unit,
+    onPreviousButtonClick: () -> Unit,
+    onReloadButtonClick: () -> Unit,
+    previousButtonText: String,
+    reloadButtonText: String
 ) {
+    //ReloadButton(reloadButtonText, onReloadButtonClick)
     Row(
         modifier = Modifier
             .fillMaxSize()
             .padding(top = 10.dp, bottom = 15.dp),
         verticalAlignment = Alignment.Bottom
     ) {
-        BackButton(previousButtonText,onPreviousButtonClick)
-       NextButton (nextButtonText,onNextButtonClick)
-
+        ReloadButton(reloadButtonText, onReloadButtonClick)
+//        Box(modifier = Modifier, contentAlignment = Alignment.End) {
+            BackButton(previousButtonText, onPreviousButtonClick)
+            NextButton(nextButtonText, onNextButtonClick)
+       // }
 
     }
 }
-
-
-
-
 
 
 @Preview(showBackground = true)

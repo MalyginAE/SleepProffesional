@@ -16,6 +16,8 @@ fun NavigationPanel(
     onNextButtonClick: () -> Unit,
     onPreviousButtonClick: () -> Unit,
     previousButtonText: String,
+    onReloadButtonClick: () -> Unit,
+    reloadButtonText: String,
     cards: @Composable () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -26,7 +28,9 @@ fun NavigationPanel(
                 nextButtonText,
                 onNextButtonClick,
                 onPreviousButtonClick,
-                previousButtonText
+                previousButtonText,
+                onReloadButtonClick,
+                reloadButtonText
             )
         }
     }
@@ -38,19 +42,21 @@ fun ContentWithNavigationButton(
     nextButtonText: String,
     onNextButtonClick: () -> Unit,
     onPreviousButtonClick: () -> Unit,
-    previousButtonText: String
+    previousButtonText: String,
+    onReloadButtonClick: () -> Unit,
+    reloadButtonText: String
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(end = 30.dp, start = 30.dp)
+            .padding(end = 44.dp, start = 44.dp)
     ) {
         Column {
 //            RestartButton()
             Box(
                 modifier = Modifier
                     .padding(top = 15.dp)
-                    .fillMaxHeight(0.8f)
+//                    .fillMaxHeight(0.8f)
             ) {
                 cards()
             }
@@ -58,18 +64,14 @@ fun ContentWithNavigationButton(
                 nextButtonText,
                 onNextButtonClick,
                 onPreviousButtonClick,
-                previousButtonText
+                onReloadButtonClick,
+                previousButtonText,
+                reloadButtonText
             )
         }
     }
 }
 
-data class SurveyCards(
-    val text: String,
-    val isChosen: MutableState<Boolean> = mutableStateOf(false),
-    val onClick: () -> Unit = { isChosen.value = !isChosen.value },
-    val onChoseBackgroundColor: () -> Color = { if (isChosen.value) PanelBlue else PrussianBlue }
-)
 
 
 

@@ -18,7 +18,9 @@ fun AnalyseDataDisplayView(navController: NavController,analyseViewState: Analys
         "next",
         onNextButtonClick = { navController.navigate(MainScreen.PostData.route) },
         onPreviousButtonClick = { navController.navigate(MainScreen.Camera.route)},
-        "back"
+        "back",
+        reloadButtonText = "Reload",
+        onReloadButtonClick = {}
     ) {
 
         Text(text = analyseViewState.result)

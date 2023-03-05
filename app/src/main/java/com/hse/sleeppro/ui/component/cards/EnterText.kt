@@ -16,11 +16,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.hse.sleeppro.ui.theme.PanelGray
 
-//data class EnterName(
-//    val text:String
-//)
-
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun EnterText(
     modifier: Modifier = Modifier
@@ -30,12 +25,10 @@ fun EnterText(
     cardTitle: String,
     labelText: String,
     keyboardActions: KeyboardActions
-    //trailingIcon: () -> Unit
 ) {
 
     Box(
         modifier = modifier
-            .padding(start = 56.dp, top = 36.dp)
     ) {
         Column(
             modifier = Modifier

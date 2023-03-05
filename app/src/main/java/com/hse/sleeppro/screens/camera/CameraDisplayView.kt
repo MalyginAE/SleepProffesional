@@ -31,7 +31,9 @@ fun CameraDisplayView(
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Cards.route)
         } ,
-        "backend"
+        "backend",
+        {},
+        "Reload"
     ) {
         if (viewState.showCamera) {
             Box(modifier = Modifier.fillMaxSize()) {

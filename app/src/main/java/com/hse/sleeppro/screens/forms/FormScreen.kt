@@ -72,7 +72,9 @@ fun FormViewDisplay(
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Greeting.route)
         },
-        "backend"
+        "backend",
+        reloadButtonText = "Reload",
+        onReloadButtonClick = {}
     ) {
 
         Column() {
