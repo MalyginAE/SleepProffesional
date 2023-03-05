@@ -17,4 +17,5 @@ val PanelGray = Color(0xFFEAEAEA)
 
 val Green500 = Color(0xFF42C5E1)
 val Base900 = Color(0xFF183059)
+val Base100 = Color(0xFFC2CDDE)
 val Base0 = Color(0xFFFFFFFF)

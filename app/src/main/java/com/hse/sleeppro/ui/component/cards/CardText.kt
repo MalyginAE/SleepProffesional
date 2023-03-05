@@ -6,16 +6,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.hse.sleeppro.ui.theme.Base900
 import com.hse.sleeppro.ui.theme.cardsFont
 
 
 @Composable
-fun CardTitle(title:String){
+fun CardTitle(title:String, modifier: Modifier = Modifier){
     Text(
         text = title,
         fontFamily = cardsFont,
-        modifier = Modifier.padding(15.dp),
-        color = Color(0xFF041950)
+        modifier = modifier,
+        color = Base900
     )
 }
 

@@ -26,7 +26,7 @@ fun CameraDisplayView(
     onImageClick: () -> Unit
 ) {
     NavigationPanel(
-        "next",
+        "NEXT",
         onNextButtonClick = { navController.navigate(MainScreen.PostData.route) },
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Cards.route)

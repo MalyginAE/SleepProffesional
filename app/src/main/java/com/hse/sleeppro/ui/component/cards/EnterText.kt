@@ -2,10 +2,12 @@ package com.hse.sleeppro.ui.component.cards
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -27,14 +29,13 @@ fun EnterText(
     onValueChanged: (String) -> Unit,
     cardTitle: String,
     labelText: String,
-   keyboardActions: KeyboardActions
+    keyboardActions: KeyboardActions
     //trailingIcon: () -> Unit
 ) {
 
     Box(
         modifier = modifier
-            .padding(bottom = 10.dp, top = 10.dp)
-            .background(PanelGray)
+            .padding(start = 56.dp, top = 36.dp)
     ) {
         Column(
             modifier = Modifier
@@ -42,27 +43,22 @@ fun EnterText(
                 .fillMaxWidth()
         ) {
             CardTitle(title = cardTitle)
-            OutlinedTextField(
-                modifier = Modifier
-                    .heightIn(min = 10.dp)
-                    .padding(start = 15.dp, end = 15.dp)
-                    .fillMaxWidth(),
-                value = text,
-                onValueChange = onValueChanged,
-                label = { Text(text = labelText) },
-//                trailingIcon = {
-//                    if (isShowIconCheck.value) {
-//                        IconButton(onClick = { /*Nothing*/ }) {
-//                            Icon(imageVector = Icons.Filled.Check, contentDescription = "")
-//                        }
-//                    }
-//                },
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Done
-                ),
-                keyboardActions = keyboardActions
-            )
+                OutlinedTextField(
+                    shape = RoundedCornerShape(15.dp),
+                    modifier = Modifier
+                        .heightIn(min = 42.dp)
+                        .padding(top = 6.dp)
+                        .fillMaxWidth(),
+                    value = text,
+                    onValueChange = onValueChanged,
+                    label = { Text(text = labelText) },
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Done
+                    ),
+                    keyboardActions = keyboardActions
+                )
+            }
         }
-    }
+
 }
 

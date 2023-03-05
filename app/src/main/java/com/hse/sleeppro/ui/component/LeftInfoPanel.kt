@@ -20,7 +20,6 @@ import com.hse.sleeppro.ui.theme.Green500
 
 @Composable
 fun LeftInfoPanel() {
-    val fontSize = 10
     Row() {
         Box(
             modifier = Modifier
@@ -43,7 +42,6 @@ fun LeftInfoPanel() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .background(Green500)
                     .align(Alignment.Center)
 
 
@@ -52,21 +50,6 @@ fun LeftInfoPanel() {
                 AnalysisInfo()
                 ScanInfo()
                 ResultInfo()
-//                for (action in mapOf("Personalise" to Color.White,"Scan" to PrussianBlue,
-//                    "Analysis" to PrussianBlue,"Results" to PrussianBlue))
-//                Box(
-//                    modifier = Modifier
-//                        .background(if (action.value == Color.White) PanelBlue else Color.LightGray)
-//                        .fillMaxWidth()
-//                ) {
-//                    Text(
-//                        text = action.key,
-//                        color = action.value,
-//                        fontFamily = cardsFont,
-//                        fontSize = fontSize.sp,
-//                        modifier = Modifier.padding(5.dp)
-//                    )
-//                }
             }
 
         }

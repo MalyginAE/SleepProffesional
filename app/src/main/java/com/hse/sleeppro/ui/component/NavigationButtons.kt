@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hse.sleeppro.ui.component.button.BackButton
+import com.hse.sleeppro.ui.component.button.NextButton
 import com.hse.sleeppro.ui.theme.PanelBlue
 import com.hse.sleeppro.ui.theme.cardsFont
 
@@ -33,70 +35,16 @@ fun NavigationButton(nextButtonText:String,
         verticalAlignment = Alignment.Bottom
     ) {
         BackButton(previousButtonText,onPreviousButtonClick)
-        NextButton(nextButtonText,onNextButtonClick)
+       NextButton (nextButtonText,onNextButtonClick)
+
+
     }
 }
 
 
-@Composable
-fun NextButton(textButton:String , onNextButtonClick: () -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Box(
-            modifier = Modifier
-                .widthIn(min = 100.dp)
-                .fillMaxWidth(0.2f)
-                .height(40.dp)
-                .background(PanelBlue)
-                .align(Alignment.BottomEnd)
-                .clickable { onNextButtonClick.invoke() }
-        ) {
-            Row(
-                modifier = Modifier
-                    .align(Alignment.Center),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(text = textButton, fontFamily = cardsFont, fontSize = 22.sp)
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = "",
-                    Modifier
-                        .padding(start = 5.dp)
-                        .offset(y = 6.dp)
-                )
-            }
-        }
-    }
-}
 
 
-@Composable
-fun BackButton(backTextButton: String, onPreviousButtonClick: ()->Unit) {
-    Box() {
-        Box(
-            modifier = Modifier
-                .widthIn(min = 100.dp)
-                .fillMaxWidth(0.15f)
-                .height(40.dp)
-                .background(Color.LightGray)
-                .align(Alignment.BottomStart)
-                .clickable { Log.d("back button clicked", "back button back was clicked")
-                onPreviousButtonClick.invoke()}
-        ) {
-            Row(
-                modifier = Modifier
-                    .align(Alignment.Center),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "",
-                    Modifier.offset(y = 6.dp)
-                )
-                Text(text = backTextButton, fontSize = 22.sp, fontFamily = cardsFont)
-            }
-        }
-    }
-}
+
 
 @Preview(showBackground = true)
 @Composable

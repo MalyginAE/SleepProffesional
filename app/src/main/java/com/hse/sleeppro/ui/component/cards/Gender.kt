@@ -27,26 +27,9 @@ fun EnterOnePossibleChoise(modifier: Modifier = Modifier, cardTitle: String, gen
                     .fillMaxSize()
                     .padding(15.dp),
             ) {
-                GenderCard(genderList, onClick)
+               // GenderCard(genderList, onClick)
             }
         }
     }
 }
 
-@Composable
-private fun GenderCard(genders: Map<String, Boolean>, onClick: () -> Unit) {
-    var i = 1
-    for (gender in genders)
-        Box(contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .padding(5.dp)
-                .heightIn(min = 30.dp, max = 70.dp)
-                .widthIn(min = 40.dp)
-                .fillMaxHeight()
-                .fillMaxWidth(countEqualDistance(genders.size, i++))
-                .background(if (gender.value) PrussianBlue else PanelBlue)
-                .clickable { onClick() }
-        ) {
-            InnerCardText(text = gender.key)
-        }
-}
