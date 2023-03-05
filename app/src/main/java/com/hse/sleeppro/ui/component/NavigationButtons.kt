@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hse.sleeppro.ui.component.button.BackButton
 import com.hse.sleeppro.ui.component.button.NextButton
+import com.hse.sleeppro.ui.component.button.NextButtonState
 import com.hse.sleeppro.ui.component.button.ReloadButton
 import com.hse.sleeppro.ui.theme.PanelBlue
 import com.hse.sleeppro.ui.theme.cardsFont
@@ -30,7 +31,8 @@ fun NavigationButton(
     onPreviousButtonClick: () -> Unit,
     onReloadButtonClick: () -> Unit,
     previousButtonText: String,
-    reloadButtonText: String
+    reloadButtonText: String,
+    nextButtonState: NextButtonState,
 ) {
     //ReloadButton(reloadButtonText, onReloadButtonClick)
     Row(
@@ -43,7 +45,7 @@ fun NavigationButton(
         ReloadButton(reloadButtonText, onReloadButtonClick)
         Row {
             BackButton(previousButtonText, onPreviousButtonClick)
-            NextButton(nextButtonText, onNextButtonClick)
+            NextButton(state =nextButtonState,nextButtonText, onNextButtonClick)
 
         }
 //        Box(modifier = Modifier, contentAlignment = Alignment.End) {

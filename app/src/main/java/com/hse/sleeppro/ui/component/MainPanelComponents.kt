@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.hse.sleeppro.ui.component.button.NextButtonState
 import com.hse.sleeppro.ui.theme.PanelBlue
 import com.hse.sleeppro.ui.theme.PrussianBlue
 
@@ -18,6 +19,7 @@ fun NavigationPanel(
     previousButtonText: String,
     onReloadButtonClick: () -> Unit,
     reloadButtonText: String,
+    nextButtonState: NextButtonState = NextButtonState.ENABLED,
     cards: @Composable () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -30,7 +32,8 @@ fun NavigationPanel(
                 onPreviousButtonClick,
                 previousButtonText,
                 onReloadButtonClick,
-                reloadButtonText
+                reloadButtonText,
+                nextButtonState
             )
         }
     }
@@ -44,7 +47,8 @@ fun ContentWithNavigationButton(
     onPreviousButtonClick: () -> Unit,
     previousButtonText: String,
     onReloadButtonClick: () -> Unit,
-    reloadButtonText: String
+    reloadButtonText: String,
+    nextButtonState: NextButtonState,
 ) {
     Box(
         modifier = Modifier
@@ -52,11 +56,10 @@ fun ContentWithNavigationButton(
             .padding(end = 44.dp, start = 44.dp)
     ) {
         Column {
-//            RestartButton()
             Box(
                 modifier = Modifier
                     .padding(top = 15.dp)
-//                    .fillMaxHeight(0.8f)
+                    .fillMaxHeight(0.85f)
             ) {
                 cards()
             }
@@ -66,7 +69,8 @@ fun ContentWithNavigationButton(
                 onPreviousButtonClick,
                 onReloadButtonClick,
                 previousButtonText,
-                reloadButtonText
+                reloadButtonText,
+                nextButtonState
             )
         }
     }

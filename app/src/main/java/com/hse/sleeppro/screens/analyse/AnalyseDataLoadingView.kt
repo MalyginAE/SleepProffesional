@@ -19,7 +19,8 @@ fun AnalyseDataLoadingView(navController: NavController) {
         onPreviousButtonClick = { navController.previousBackStackEntry?.let { navController.navigate(it.id) } },
         "back",
         {},
-        "Reload"
+        "Reload",
+
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             CircularProgressIndicator(
