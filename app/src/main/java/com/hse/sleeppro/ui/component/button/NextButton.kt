@@ -41,6 +41,7 @@ fun NextButton(textButton:String , onNextButtonClick: () -> Unit) {
             modifier = Modifier
                 .widthIn(min = 100.dp)
                 .fillMaxWidth(0.2f)
+                .padding(start = 10.dp)
                 .height(40.dp)
                 .background(Base100,RoundedCornerShape(15.dp))
                 .clickable { onNextButtonClick.invoke() }

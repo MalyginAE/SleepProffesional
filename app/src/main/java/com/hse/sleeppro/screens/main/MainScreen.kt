@@ -19,6 +19,8 @@ import com.hse.sleeppro.screens.camera.model.CameraViewModel
 import com.hse.sleeppro.screens.forms.FormScreen
 import com.hse.sleeppro.screens.forms.model.FormViewModel
 import com.hse.sleeppro.screens.greetting.GreetingScreen
+import com.hse.sleeppro.screens.person_count.PersonCountScreen
+import com.hse.sleeppro.screens.person_count.model.PersonCountViewModel
 
 
 @ExperimentalFoundationApi
@@ -33,6 +35,7 @@ fun MainScreen(
     val navChildController = rememberNavController()
     val cameraViewModel = hiltViewModel<CameraViewModel>()
     val formViewModel = hiltViewModel<FormViewModel>()
+    val personCountViewModel = hiltViewModel<PersonCountViewModel>()
     Column {
         Box(modifier = Modifier.weight(1f)) {
             NavHost(
@@ -47,6 +50,9 @@ fun MainScreen(
                     FormScreen(
                         navChildController, formViewModel = formViewModel
                     )
+                }
+                composable(MainScreen.PersonCount.route){
+                    PersonCountScreen(personCountViewModel = personCountViewModel,navChildController)
                 }
 
                 composable(MainScreen.Camera.route) {

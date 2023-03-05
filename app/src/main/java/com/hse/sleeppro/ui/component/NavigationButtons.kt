@@ -37,12 +37,16 @@ fun NavigationButton(
         modifier = Modifier
             .fillMaxSize()
             .padding(top = 10.dp, bottom = 15.dp),
-        verticalAlignment = Alignment.Bottom
+        verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         ReloadButton(reloadButtonText, onReloadButtonClick)
-//        Box(modifier = Modifier, contentAlignment = Alignment.End) {
+        Row {
             BackButton(previousButtonText, onPreviousButtonClick)
             NextButton(nextButtonText, onNextButtonClick)
+
+        }
+//        Box(modifier = Modifier, contentAlignment = Alignment.End) {
        // }
 
     }

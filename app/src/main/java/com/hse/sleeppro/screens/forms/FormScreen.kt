@@ -61,14 +61,12 @@ fun FormViewDisplay(
     onNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
 
-    // onNextButtonClick: () -> Unit,
-    //onPreviousButtonClick: () -> Unit,
 ) {
     val nameModel = viewState.enterNameModel
     val emailModel = viewState.enterEmailModel
     NavigationPanel(
         "next",
-        onNextButtonClick = { navController.navigate(MainScreen.Camera.route) },
+        onNextButtonClick = { navController.navigate(MainScreen.PersonCount.route) },
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Greeting.route)
         },
@@ -93,10 +91,6 @@ fun FormViewDisplay(
                 labelText = emailModel.labelText,
                 keyboardActions = keyboardActions
             )
-
-//            EnterOnePossibleChoise(cardTitle = ) {
-//
-//            }
 
         }
 
