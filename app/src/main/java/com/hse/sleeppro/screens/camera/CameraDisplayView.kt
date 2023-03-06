@@ -13,6 +13,11 @@ import coil.compose.rememberImagePainter
 import com.hse.sleeppro.screens.camera.model.CameraViewState
 import com.hse.sleeppro.screens.main.MainScreen
 import com.hse.sleeppro.ui.component.NavigationPanel
+import com.hse.sleeppro.ui.component.cards.AnalysisInfo
+import com.hse.sleeppro.ui.component.cards.CardState
+import com.hse.sleeppro.ui.component.cards.PersonaliseCard
+import com.hse.sleeppro.ui.component.cards.ResultInfo
+import com.hse.sleeppro.ui.component.cards.ScanInfo
 import java.io.File
 import java.util.concurrent.Executors
 
@@ -26,14 +31,20 @@ fun CameraDisplayView(
     onImageClick: () -> Unit
 ) {
     NavigationPanel(
-        "NEXT",
+        "Next",
         onNextButtonClick = { navController.navigate(MainScreen.PostData.route) },
         onPreviousButtonClick = {
-            navController.navigate(MainScreen.Cards.route)
+            navController.navigate(MainScreen.PersonCount.route)
         } ,
-        "backend",
+        "Back",
         {},
-        "Reload"
+        panelCards = {
+            PersonaliseCard(cardState = CardState.PASSIVE)
+            AnalysisInfo(state = CardState.ACTIVE)
+            ScanInfo()
+            ResultInfo()
+        },
+       reloadButtonText =  "Reload"
     ) {
         if (viewState.showCamera) {
             Box(modifier = Modifier.fillMaxSize()) {

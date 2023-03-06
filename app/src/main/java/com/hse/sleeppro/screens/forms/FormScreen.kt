@@ -12,8 +12,13 @@ import com.hse.sleeppro.screens.forms.model.FormViewModel
 import com.hse.sleeppro.screens.main.MainScreen
 import com.hse.sleeppro.ui.component.LeftInfoPanel
 import com.hse.sleeppro.ui.component.NavigationPanel
+import com.hse.sleeppro.ui.component.cards.AnalysisInfo
+import com.hse.sleeppro.ui.component.cards.CardState
 import com.hse.sleeppro.ui.component.cards.EnterOnePossibleChoise
 import com.hse.sleeppro.ui.component.cards.EnterText
+import com.hse.sleeppro.ui.component.cards.PersonaliseCard
+import com.hse.sleeppro.ui.component.cards.ResultInfo
+import com.hse.sleeppro.ui.component.cards.ScanInfo
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -29,7 +34,13 @@ fun FormScreen(
 
 
     when (val state = viewState.value) {
-        FormViewState.Loading -> LeftInfoPanel()
+        FormViewState.Loading -> LeftInfoPanel(content = {
+            PersonaliseCard(cardState = CardState.ACTIVE)
+            AnalysisInfo(state = CardState.PASSIVE)
+            ScanInfo()
+            ResultInfo()
+        }
+        )
         is FormViewState.Display -> FormViewDisplay(
             viewState = state,
             navController = navController,
@@ -61,7 +72,7 @@ fun FormViewDisplay(
     onNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
 
-) {
+    ) {
     val nameModel = viewState.enterNameModel
     val emailModel = viewState.enterEmailModel
     NavigationPanel(
@@ -72,6 +83,12 @@ fun FormViewDisplay(
         },
         "Back",
         reloadButtonText = "Reload",
+        panelCards = {
+            PersonaliseCard(cardState = CardState.ACTIVE)
+            AnalysisInfo(state = CardState.PASSIVE)
+            ScanInfo()
+            ResultInfo()
+        },
         onReloadButtonClick = {}
     ) {
 

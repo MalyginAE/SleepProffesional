@@ -10,6 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.hse.sleeppro.screens.main.MainScreen
 import com.hse.sleeppro.ui.component.NavigationPanel
+import com.hse.sleeppro.ui.component.cards.AnalysisInfo
+import com.hse.sleeppro.ui.component.cards.CardState
+import com.hse.sleeppro.ui.component.cards.PersonaliseCard
+import com.hse.sleeppro.ui.component.cards.ResultInfo
+import com.hse.sleeppro.ui.component.cards.ScanInfo
 
 @Composable
 fun AnalyseDataLoadingView(navController: NavController) {
@@ -19,7 +24,13 @@ fun AnalyseDataLoadingView(navController: NavController) {
         onPreviousButtonClick = { navController.previousBackStackEntry?.let { navController.navigate(it.id) } },
         "back",
         {},
-        "Reload",
+        panelCards = {
+            PersonaliseCard(cardState = CardState.PASSIVE)
+            AnalysisInfo(state = CardState.ACTIVE)
+            ScanInfo()
+            ResultInfo()
+        },
+        reloadButtonText = "Reload",
 
     ) {
         Box(modifier = Modifier.fillMaxSize()) {

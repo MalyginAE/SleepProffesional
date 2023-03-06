@@ -27,7 +27,7 @@ fun TwoHumanCard(state: PersonCountViewState.Display, modifier: Modifier = Modif
         color = Green500
     Box(
         modifier = Modifier
-            .size(400.dp, 400.dp)
+            .size(350.dp, 350.dp)
             .border(2.dp, color, RoundedCornerShape(15.dp))
             .clickable { onTwoHumanClick.invoke() },
         contentAlignment = Alignment.Center

@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.hse.sleeppro.R
 import com.hse.sleeppro.ui.component.cards.AnalysisInfo
+import com.hse.sleeppro.ui.component.cards.CardState
 import com.hse.sleeppro.ui.component.cards.PersonaliseCard
 import com.hse.sleeppro.ui.component.cards.ResultInfo
 import com.hse.sleeppro.ui.component.cards.ScanInfo
@@ -19,7 +20,7 @@ import com.hse.sleeppro.ui.theme.Green500
 
 
 @Composable
-fun LeftInfoPanel() {
+fun LeftInfoPanel(content: @Composable () -> Unit) {
     Row() {
         Box(
             modifier = Modifier
@@ -27,8 +28,11 @@ fun LeftInfoPanel() {
                 .width(278.dp)
                 .background(Green500),
 
-        ) {
-            Box(Modifier.fillMaxWidth().padding(top = 38.dp), contentAlignment = Alignment.Center) {
+            ) {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 38.dp), contentAlignment = Alignment.Center) {
                 Image(
                     painter = painterResource(id = R.drawable.ascona_logo),
                     contentDescription = "Logo company ",
@@ -46,10 +50,7 @@ fun LeftInfoPanel() {
 
 
             ) {
-                PersonaliseCard()
-                AnalysisInfo()
-                ScanInfo()
-                ResultInfo()
+                content()
             }
 
         }

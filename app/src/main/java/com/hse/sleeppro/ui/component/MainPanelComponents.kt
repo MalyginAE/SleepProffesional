@@ -20,11 +20,12 @@ fun NavigationPanel(
     onReloadButtonClick: () -> Unit,
     reloadButtonText: String,
     nextButtonState: () ->NextButtonState ={ NextButtonState.ENABLED},
+    panelCards: @Composable () -> Unit,
     cards: @Composable () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         Row {
-            LeftInfoPanel()
+            LeftInfoPanel(panelCards)
             ContentWithNavigationButton(
                 cards,
                 nextButtonText,

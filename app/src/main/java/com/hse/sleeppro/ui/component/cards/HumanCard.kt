@@ -28,8 +28,8 @@ fun HumanCard(state: PersonCountViewState.Display ,modifier: Modifier =Modifier,
         color = Green500
     Box(
         modifier = modifier
-            .widthIn()
-            .size(400.dp, 400.dp)
+            .height(350.dp)
+            .width(350.dp)
             .border(2.dp, color, RoundedCornerShape(15.dp))
             .clickable { onHumanClick.invoke() },
         contentAlignment = Alignment.Center,

@@ -19,12 +19,46 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hse.sleeppro.R
+import com.hse.sleeppro.ui.theme.Base0
 import com.hse.sleeppro.ui.theme.Base900
 import com.hse.sleeppro.ui.theme.robotoFont
+enum class CardState{
+    ACTIVE,PASSIVE
+}
+@Composable
+fun PersonaliseCard(cardState: CardState) {
+    when(cardState){
+         CardState.ACTIVE -> PersonaliseCardActive()
+         CardState.PASSIVE -> PersonaliseCardPassive()
+    }
+}
 
 @Composable
 @Preview(showBackground = true)
-fun PersonaliseCard() {
+fun PersonaliseCardPassive() {
+    Row(modifier = Modifier.padding(start = 51.dp, top = 37.dp)) {
+        Image(
+            painter = painterResource(id = R.drawable.account),
+            contentDescription = "result",
+            colorFilter = ColorFilter.tint(Base0),
+            modifier = Modifier
+//                    .background(color = Base900)
+                .padding(start = 20.dp, top = 14.dp, bottom = 14.dp)
+                .width(30.67.dp)
+                .height(30.67.dp)
+        )
+        Text(
+            text = "Result",
+            fontFamily = robotoFont,
+            fontSize = 24.sp,
+            color = Base0,
+            modifier = Modifier.padding(top = 15.dp, bottom = 15.dp, end = 12.dp, start = 20.dp),
+        )
+    }
+}
+
+@Composable
+private fun PersonaliseCardActive(){
     Box(modifier =Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         Card(shape = RoundedCornerShape(15.dp), elevation = 15.dp) {
             Row() {
