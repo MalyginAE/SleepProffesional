@@ -65,12 +65,12 @@ fun FormViewDisplay(
     val nameModel = viewState.enterNameModel
     val emailModel = viewState.enterEmailModel
     NavigationPanel(
-        "next",
+        "Next",
         onNextButtonClick = { navController.navigate(MainScreen.PersonCount.route) },
         onPreviousButtonClick = {
             navController.navigate(MainScreen.Greeting.route)
         },
-        "backend",
+        "Back",
         reloadButtonText = "Reload",
         onReloadButtonClick = {}
     ) {

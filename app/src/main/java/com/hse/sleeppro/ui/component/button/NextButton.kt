@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -16,6 +17,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.NavigateNext
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,10 +53,9 @@ fun NextButton(state: NextButtonState,textButton:String , onNextButtonClick: () 
 private fun DisabledNextButton(textButton:String , onNextButtonClick: () -> Unit){
     Box(
         modifier = Modifier
-            .widthIn(min = 100.dp)
-            .fillMaxWidth(0.2f)
+            .width(140.dp)
             .padding(start = 10.dp)
-            .height(40.dp)
+            .height(44.dp)
             .background(Base100, RoundedCornerShape(15.dp))
 //            .clickable { onNextButtonClick.invoke() }
     ) {
@@ -65,13 +66,14 @@ private fun DisabledNextButton(textButton:String , onNextButtonClick: () -> Unit
         ) {
             Text(text = textButton, fontFamily = robotoFont, fontSize = 20.sp, color = Base0)
             Icon(
-                imageVector = Icons.Default.ArrowForward,
+                imageVector = Icons.Default.NavigateNext,
                 contentDescription = "",
                 tint = Base0,
 
                 modifier = Modifier
                     .padding(start = 5.dp)
-                    .offset(y = 6.dp)
+                    .height(22.dp)
+                    .offset(y = (1).dp)
             )
         }
     }
@@ -83,10 +85,9 @@ private fun DisabledNextButton(textButton:String , onNextButtonClick: () -> Unit
 private fun EnabledNextButton(textButton:String , onNextButtonClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .widthIn(min = 100.dp)
-            .fillMaxWidth(0.2f)
+            .width(140.dp)
             .padding(start = 10.dp)
-            .height(40.dp)
+            .height(44.dp)
             .background(Green500, RoundedCornerShape(15.dp))
             .clickable { onNextButtonClick.invoke() }
     ) {
@@ -97,14 +98,14 @@ private fun EnabledNextButton(textButton:String , onNextButtonClick: () -> Unit)
         ) {
             Text(text = textButton, fontFamily = robotoFont, fontSize = 20.sp, color = Base0)
             Icon(
-                imageVector = Icons.Default.ArrowForward,
+                imageVector = Icons.Default.NavigateNext,
                 contentDescription = "",
                 tint = Base0,
 
                 modifier = Modifier
-                    .padding(start = 5.dp)
-                    .offset(y = 6.dp)
-            )
+                    .padding(start = 22.dp)
+                    .height(22.dp)
+                    .offset(y = (1).dp)            )
         }
     }
 }

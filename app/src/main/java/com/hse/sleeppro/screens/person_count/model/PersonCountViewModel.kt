@@ -38,7 +38,6 @@ class PersonCountViewModel @Inject constructor() : ViewModel(), EventHandler<Per
             )
 
 
-            else -> {}
         }
     }
 }

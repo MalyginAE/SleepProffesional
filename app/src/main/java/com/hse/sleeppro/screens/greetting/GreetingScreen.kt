@@ -32,7 +32,7 @@ fun GreetingScreen(navController: NavController) {
                 //   .heightIn(min = 50.dp, max = 150.dp)
                 //  .widthIn(min = 50.dp, max = 150.dp)
             )
-            StartButton("New scan",{ navController.navigate(MainScreen.Cards.route) })
+            StartButton("START",{ navController.navigate(MainScreen.Cards.route) })
         }
     }
 //    Button(onClick = { navController.navigate(MainScreen.Cards.route) }) {

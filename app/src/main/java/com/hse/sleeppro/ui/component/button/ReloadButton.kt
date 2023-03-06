@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -30,7 +31,8 @@ fun ReloadButton(textButton: String, onButtonClick: () -> Unit){
     Box(
 
         modifier = Modifier
-            .height(40.dp)
+            .height(44.dp)
+            .width(140.dp)
             .background(Base0)
             .border(2.dp, Green500,RoundedCornerShape(15.dp))
             .clickable { onButtonClick.invoke() }
@@ -53,7 +55,7 @@ fun ReloadButton(textButton: String, onButtonClick: () -> Unit){
                 fontFamily = robotoFont,
                 fontSize = 20.sp,
                 color = Green500,
-                modifier = Modifier.padding(10.dp))
+                modifier = Modifier.padding(8.dp))
 
         }
     }

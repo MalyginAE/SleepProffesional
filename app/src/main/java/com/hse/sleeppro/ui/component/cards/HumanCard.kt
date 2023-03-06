@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ fun HumanCard(state: PersonCountViewState.Display ,modifier: Modifier =Modifier,
         color = Green500
     Box(
         modifier = modifier
+            .widthIn()
             .size(400.dp, 400.dp)
             .border(2.dp, color, RoundedCornerShape(15.dp))
             .clickable { onHumanClick.invoke() },

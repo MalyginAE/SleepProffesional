@@ -19,7 +19,7 @@ fun NavigationPanel(
     previousButtonText: String,
     onReloadButtonClick: () -> Unit,
     reloadButtonText: String,
-    nextButtonState: NextButtonState = NextButtonState.ENABLED,
+    nextButtonState: () ->NextButtonState ={ NextButtonState.ENABLED},
     cards: @Composable () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -48,7 +48,7 @@ fun ContentWithNavigationButton(
     previousButtonText: String,
     onReloadButtonClick: () -> Unit,
     reloadButtonText: String,
-    nextButtonState: NextButtonState,
+    nextButtonState:() ->NextButtonState,
 ) {
     Box(
         modifier = Modifier

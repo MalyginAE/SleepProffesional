@@ -32,7 +32,7 @@ fun NavigationButton(
     onReloadButtonClick: () -> Unit,
     previousButtonText: String,
     reloadButtonText: String,
-    nextButtonState: NextButtonState,
+    nextButtonState:() ->NextButtonState,
 ) {
     //ReloadButton(reloadButtonText, onReloadButtonClick)
     Row(
@@ -45,7 +45,7 @@ fun NavigationButton(
         ReloadButton(reloadButtonText, onReloadButtonClick)
         Row {
             BackButton(previousButtonText, onPreviousButtonClick)
-            NextButton(state =nextButtonState,nextButtonText, onNextButtonClick)
+            NextButton(state =nextButtonState.invoke(),nextButtonText, onNextButtonClick)
 
         }
 //        Box(modifier = Modifier, contentAlignment = Alignment.End) {
