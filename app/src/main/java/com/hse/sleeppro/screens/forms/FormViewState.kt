@@ -15,24 +15,35 @@ sealed class FormViewState {
             cardTitle = "Email",
             // isShowIconCheck = false
         ),
-        val genderModel:GenderModel = GenderModel(GenderType.None),
+        val genderModel:GenderModel = GenderModel("Male"),
+        val sleepPositionModel:SleepPositionModel = SleepPositionModel(
+            "Back", "SleepPosition"
+        ),
 
 
         ) : FormViewState()
 }
 
 data class EnterTextCardModel(
-
     val text: String,
-   // val isShowIconCheck:Boolean,
     val cardTitle: String,
     val labelText: String,
-   // val trailingIcon: () -> Unit,
-
     )
 
+data class SleepPositionModel(
+    val position: String,
+    val cardTitle: String,
+    val expanded:Boolean = false,
+    val positionTypes: List<String> = listOf("Back", "Front","Side"),
+
+)
+
 data class GenderModel(
-    val gender:GenderType
+    val gender:String,
+    val expanded:Boolean = false,
+    val genderTypes: List<String> = listOf("Male", "Female"),
+
+
 )
 
 enum class GenderType(type:String){

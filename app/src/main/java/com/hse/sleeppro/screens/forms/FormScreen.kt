@@ -14,7 +14,7 @@ import com.hse.sleeppro.ui.component.LeftInfoPanel
 import com.hse.sleeppro.ui.component.NavigationPanel
 import com.hse.sleeppro.ui.component.cards.AnalysisInfo
 import com.hse.sleeppro.ui.component.cards.CardState
-import com.hse.sleeppro.ui.component.cards.EnterOnePossibleChoise
+import com.hse.sleeppro.ui.component.cards.DropDownCard
 import com.hse.sleeppro.ui.component.cards.EnterText
 import com.hse.sleeppro.ui.component.cards.PersonaliseCard
 import com.hse.sleeppro.ui.component.cards.ResultInfo
@@ -55,9 +55,14 @@ fun FormScreen(
 
             onNameChanged = { formViewModel.obtainEvent(FormEvent.NameChanged(it)) },
             onEmailChanged = { formViewModel.obtainEvent(FormEvent.EmailChanged(it)) },
+            onGenderItemChose = { formViewModel.obtainEvent(FormEvent.ClickToGenderItem(it)) },
+            onDismissGenderRequest = { formViewModel.obtainEvent(FormEvent.DismissRequestGenderModel) },
+            onGenderClick = { formViewModel.obtainEvent(FormEvent.ClickToGender) },
+            onDismissSleepPositionClick = {formViewModel.obtainEvent(FormEvent.DismissRequestSleepPositionModel)},
+            onSleepPositionItemClick ={formViewModel.obtainEvent(FormEvent.ClickToSleepPositionItem(it))} ,
+            onSleepPositionClick = {formViewModel.obtainEvent(FormEvent.ClickToSleepPosition)},
 
-
-            )
+        )
     }
 
 
@@ -71,10 +76,17 @@ fun FormViewDisplay(
     keyboardActions: KeyboardActions,
     onNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
-
+    onGenderClick: () -> Unit,
+    onGenderItemChose: (String) -> Unit,
+    onDismissGenderRequest: () -> Unit,
+    onDismissSleepPositionClick: () -> Unit,
+    onSleepPositionItemClick: (String) -> Unit,
+    onSleepPositionClick: () -> Unit,
     ) {
     val nameModel = viewState.enterNameModel
     val emailModel = viewState.enterEmailModel
+    val genderModel = viewState.genderModel
+    val sleepPositionModel = viewState.sleepPositionModel
     NavigationPanel(
         "Next",
         onNextButtonClick = { navController.navigate(MainScreen.PersonCount.route) },
@@ -108,6 +120,27 @@ fun FormViewDisplay(
                 labelText = emailModel.labelText,
                 keyboardActions = keyboardActions
             )
+            DropDownCard(
+                modifier = Modifier,
+                currentModelName = genderModel.gender,
+                dataList = genderModel.genderTypes,
+                onClick = onGenderClick,
+                cardTitle = "Gender",
+                onDismissRequest = onDismissGenderRequest,
+                expanded = genderModel.expanded,
+                onItemChose = onGenderItemChose
+            )
+
+            DropDownCard(
+                currentModelName = sleepPositionModel.position,
+                expanded = sleepPositionModel.expanded,
+                dataList = sleepPositionModel.positionTypes,
+                onClick = onSleepPositionClick,
+                onDismissRequest = onDismissSleepPositionClick,
+                onItemChose = onSleepPositionItemClick,
+                cardTitle = sleepPositionModel.cardTitle
+            )
+
 
         }
 

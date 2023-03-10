@@ -30,8 +30,30 @@ class FormViewModel @Inject constructor() : ViewModel(), EventHandler<FormEvent>
                 state.copy(enterNameModel = state.enterNameModel.copy(text = event.newValue))
             )
             is FormEvent.EmailChanged -> _formViewState.postValue(
-                state.copy(enterEmailModel =  state.enterEmailModel.copy(text = event.newEmail))
+                state.copy(enterEmailModel = state.enterEmailModel.copy(text = event.newEmail))
             )
+            is FormEvent.ClickToGender -> _formViewState.postValue(
+                state.copy(genderModel = state.genderModel.copy(expanded = !state.genderModel.expanded))
+            )
+            is FormEvent.ClickToGenderItem -> _formViewState.postValue(
+                state.copy(genderModel = state.genderModel.copy(expanded = false, gender = event.newValue))
+            )
+
+            is FormEvent.DismissRequestGenderModel -> _formViewState.postValue(
+                state.copy(genderModel = state.genderModel.copy(expanded = false))
+            )
+            is FormEvent.DismissRequestSleepPositionModel -> _formViewState.postValue(
+                state.copy(sleepPositionModel = state.sleepPositionModel.copy(expanded = false))
+            )
+
+            FormEvent.ClickToSleepPosition -> _formViewState.postValue(
+                state.copy(sleepPositionModel =  state.sleepPositionModel.copy(expanded = !state.sleepPositionModel.expanded))
+            )
+
+            is FormEvent.ClickToSleepPositionItem -> _formViewState.postValue(
+                state.copy(sleepPositionModel =  state.sleepPositionModel.copy(expanded = false, position = event.newValue))
+            )
+
 
             else -> {}
         }
